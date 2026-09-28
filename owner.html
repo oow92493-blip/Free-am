@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #030712;
+            --card-bg: rgba(15, 23, 42, 0.65);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --accent-cyan: #00f2fe;
+            --accent-blue: #4facfe;
+            --accent-purple: #7928ca;
+            --accent-pink: #ff007f;
+            --accent-glow: rgba(0, 242, 254, 0.3);
+            --text-color: #f8fafc;
+            --text-dim: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --success-color: #10b981;
+            --danger-color: #f43f5e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            padding-bottom: 40px; 
+            overflow-x: hidden; 
+        }
+
+        .bg-glow-1 { 
+            position: fixed; 
+            top: -120px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 700px; 
+            height: 380px; 
+            background: radial-gradient(circle, rgba(121, 40, 202, 0.25) 0%, rgba(0, 242, 254, 0.15) 50%, rgba(0,0,0,0) 75%); 
+            pointer-events: none; 
+            z-index: -1; 
+            filter: blur(40px);
+        }
+
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 1.2rem 1.8rem; 
+            background: rgba(15, 23, 42, 0.75); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--card-border); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo { font-size: 1.25rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; }
+        .logo i { color: var(--accent-purple); filter: drop-shadow(0 0 12px var(--accent-purple)); }
+
+        .container { max-width: 680px; margin: 1.5rem auto; padding: 0 1.2rem; width: 100%; flex: 1; }
+
+        /* ANALYTICS GRID CARDS */
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-card i {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--card-border); 
+            border-radius: 24px; 
+            padding: 2rem 1.8rem; 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15); 
+            margin-bottom: 1.5rem; 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .card h2 { font-size: 1.25rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; }
+
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.8rem; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; }
+
+        .input-box { position: relative; display: flex; align-items: center; }
+        .input-box i { position: absolute; left: 16px; color: var(--text-dim); font-size: 1.05rem; }
+        
+        .input-box input { 
+            width: 100%; 
+            padding: 14px 15px 14px 48px; 
+            background: rgba(30, 41, 59, 0.5); 
+            border: 1px solid var(--border-color); 
+            border-radius: 14px; 
+            color: #fff; 
+            font-size: 0.92rem; 
+            outline: none; 
+            transition: all 0.3s ease; 
+        }
+
+        .input-box input:focus { 
+            border-color: var(--accent-cyan); 
+            box-shadow: 0 0 16px var(--accent-glow); 
+            background: rgba(30, 41, 59, 0.85);
+        }
+
+        .btn-action { 
+            width: 100%; 
+            padding: 14px; 
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)); 
+            border: none; 
+            border-radius: 14px; 
+            color: #fff; 
+            font-size: 0.95rem; 
+            font-weight: 700; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 10px; 
+            margin-top: 1rem; 
+            box-shadow: 0 8px 25px rgba(121, 40, 202, 0.3);
+        }
+
+        .btn-action:hover { 
+            opacity: 0.95; 
+            transform: translateY(-2px); 
+            box-shadow: 0 12px 30px rgba(121, 40, 202, 0.5); 
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger-color), #be123c);
+            box-shadow: 0 8px 25px rgba(244, 63, 94, 0.3);
+        }
+
+        .btn-danger:hover {
+            box-shadow: 0 12px 30px rgba(244, 63, 94, 0.5);
+        }
+
+        .log-list { margin-top: 1rem; max-height: 320px; overflow-y: auto; padding-right: 5px; }
+        .log-item { 
+            background: rgba(30, 41, 59, 0.4); 
+            border: 1px solid var(--card-border); 
+            padding: 12px 14px; 
+            border-radius: 14px; 
+            margin-bottom: 10px; 
+            font-size: 0.82rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .log-info strong { color: #fff; display: block; font-size: 0.85rem; }
+        .log-info span { color: var(--text-dim); font-size: 0.75rem; }
+        
+        .badge-status {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        .badge-status.sukses { background: rgba(16, 185, 129, 0.2); color: var(--success-color); border: 1px solid var(--success-color); }
+        .badge-status.gagal { background: rgba(244, 63, 94, 0.2); color: var(--danger-color); border: 1px solid var(--danger-color); }
+        .badge-status.info { background: rgba(0, 242, 254, 0.2); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+
+        @media (max-width: 480px) {
+            .analytics-grid { grid-template-columns: repeat(1, 1fr); }
+        }
+
+        footer { text-align: center; padding: 1rem; color: var(--text-dim); font-size: 0.78rem; }
+        footer strong { color: var(--accent-cyan); }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-1"></div>
+
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-user-gear"></i>
+            <span>Owner Control Panel</span>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- ANALYTICS CARDS (RINGKASAN STATISTIK) -->
+        <div class="analytics-grid">
+            <div class="stat-card">
+                <i class="fa-solid fa-box-open" style="color: var(--accent-cyan);"></i>
+                <div class="stat-value" id="stat-stock-val">0</div>
+                <div class="stat-label">Sisa Stok AM premium</div>
+            </div>
+
+            <div class="stat-card">
+                <i class="fa-solid fa-users" style="color: var(--accent-blue);"></i>
+                <div class="stat-value" id="stat-users-val">0</div>
+                <div class="stat-label">User Login / Mencoba</div>
+            </div>
+
+            <div class="stat-card">
+                <i class="fa-solid fa-circle-check" style="color: var(--success-color);"></i>
+                <div class="stat-value" id="stat-success-val">0</div>
+                <div class="stat-label">Sukses AM Premium</div>
+            </div>
+        </div>
+
+        <!-- CONFIGURATION FORM -->
+        <div class="card">
+            <h2><i class="fa-solid fa-sliders" style="color: var(--accent-cyan);"></i> Konfigurasi System & Stok</h2>
+            
+            <form id="owner-config-form">
+                <div class="form-group">
+                    <label>API Key Server</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-key"></i>
+                        <input type="text" id="cfg-apikey" placeholder="Masukkan API Key..." required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Jumlah Stok AM Premium</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                        <input type="number" id="cfg-stock" placeholder="Contoh: 10" min="0" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-action">
+                    <i class="fa-solid fa-floppy-disk"></i> Simpan Konfigurasi
+                </button>
+            </form>
+        </div>
+
+        <!-- USER LOGS MONITORING -->
+        <div class="card">
+            <h2><i class="fa-solid fa-list-check" style="color: var(--accent-purple);"></i> Log Aktivitas Pengguna</h2>
+            <p style="font-size: 0.82rem; color: var(--text-dim);">Daftar riwayat</p>
+
+            <div class="log-list" id="owner-logs-container">
+                <!-- Logs rendered dynamically -->
+            </div>
+
+            <button type="button" class="btn-action btn-danger" onclick="clearOwnerLogs()" style="margin-top: 1.2rem;">
+                <i class="fa-solid fa-trash-can"></i> Bersihkan
+            </button>
+        </div>
+
+    </div>
+
+    <footer>
+        Developer by <strong>Adit</strong> &copy; 2026. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Load Data & Update Statistik saat Halaman Dimuat
+        function loadOwnerData() {
+            const savedApiKey = localStorage.getItem('db_apikey') || '';
+            const savedStock = localStorage.getItem('db_stock') || '0';
+
+            document.getElementById('cfg-apikey').value = savedApiKey;
+            document.getElementById('cfg-stock').value = savedStock;
+
+            updateDashboardAnalytics();
+            renderOwnerLogs();
+        }
+
+        // Kalkulasi Statistik Dashboard
+        function updateDashboardAnalytics() {
+            const logs = JSON.parse(localStorage.getItem('db_user_logs') || '[]');
+            const currentStock = localStorage.getItem('db_stock') || '0';
+
+            // Total akun/email unik yang pernah mencoba/login
+            const uniqueUsers = new Set(logs.map(l => l.email)).size;
+
+            // Total sukses unlock AM Premium
+            const successCount = logs.filter(l => l.status.includes('SUKSES')).length;
+
+            document.getElementById('stat-stock-val').innerText = currentStock;
+            document.getElementById('stat-users-val').innerText = uniqueUsers;
+            document.getElementById('stat-success-val').innerText = successCount;
+        }
+
+        // Render Log Pengguna
+        function renderOwnerLogs() {
+            const logs = JSON.parse(localStorage.getItem('db_user_logs') || '[]');
+            const container = document.getElementById('owner-logs-container');
+
+            if (logs.length === 0) {
+                container.innerHTML = `<p style="text-align:center; color:var(--text-dim); font-size:0.85rem; padding: 1rem 0;">Belum ada aktivitas tercatat.</p>`;
+                return;
+            }
+
+            container.innerHTML = logs.map(item => {
+                let badgeClass = 'info';
+                if (item.status.includes('SUKSES')) badgeClass = 'sukses';
+                if (item.status.includes('GAGAL')) badgeClass = 'gagal';
+
+                return `
+                    <div class="log-item">
+                        <div class="log-info">
+                            <strong>${item.email}</strong>
+                            <span>${item.detail} • ${item.time}</span>
+                        </div>
+                        <span class="badge-status ${badgeClass}">${item.status}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Simpan Konfigurasi Stok & API Key
+        document.getElementById('owner-config-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const apiKey = document.getElementById('cfg-apikey').value.trim();
+            const stock = document.getElementById('cfg-stock').value.trim();
+
+            localStorage.setItem('db_apikey', apiKey);
+            localStorage.setItem('db_stock', stock);
+
+            updateDashboardAnalytics();
+            alert('✅ Konfigurasi Stok dan API Key berhasil disimpan!');
+        });
+
+        // Bersihkan Log
+        function clearOwnerLogs() {
+            if (confirm('Yakin ingin menghapus seluruh log aktivitas pengguna?')) {
+                localStorage.removeItem('db_user_logs');
+                updateDashboardAnalytics();
+                renderOwnerLogs();
+                alert('Log berhasil dibersihkan!');
+            }
+        }
+
+        // Auto update saat data localStorage berubah di tab lain
+        window.addEventListener('storage', () => {
+            loadOwnerData();
+        });
+
+        document.addEventListener('DOMContentLoaded', loadOwnerData);
+    </script>
+</body>
+</html>
