@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developer by Adit</title>
+    <title>AM Premium Free - Developer by Adit</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -14,8 +14,6 @@
             --accent-cyan: #00f2fe;
             --accent-blue: #4facfe;
             --accent-purple: #7928ca;
-            --accent-pink: #ff007f;
-            --accent-fire: #ff3b00;
             --accent-glow: rgba(0, 242, 254, 0.3);
             --text-color: #f8fafc;
             --text-dim: #94a3b8;
@@ -37,7 +35,6 @@
             overflow-x: hidden; 
         }
 
-        /* Gradient Glow Background Multi-Color (Aurora Cyberpunk Glow) */
         .bg-glow-1 { 
             position: fixed; 
             top: -120px; 
@@ -63,7 +60,6 @@
             filter: blur(50px);
         }
 
-        /* Navbar Glassmorphism */
         nav { 
             display: flex; 
             justify-content: space-between; 
@@ -80,16 +76,7 @@
         }
 
         .logo { font-size: 1.25rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; }
-        .logo i { 
-            color: var(--accent-cyan); 
-            filter: drop-shadow(0 0 12px var(--accent-cyan)); 
-            animation: flamePulse 1.8s infinite alternate ease-in-out; 
-        }
-
-        @keyframes flamePulse { 
-            from { transform: scale(1); filter: drop-shadow(0 0 6px var(--accent-cyan)); } 
-            to { transform: scale(1.2); filter: drop-shadow(0 0 20px var(--accent-blue)); } 
-        }
+        .logo i { color: var(--accent-cyan); filter: drop-shadow(0 0 12px var(--accent-cyan)); }
 
         .stock-badge { 
             background: linear-gradient(135deg, rgba(0, 242, 254, 0.12), rgba(79, 172, 254, 0.05)); 
@@ -103,25 +90,21 @@
             align-items: center; 
             gap: 8px; 
             box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
-            transition: all 0.3s ease;
         }
 
         .stock-badge.out-of-stock {
             background: rgba(244, 63, 94, 0.15);
             color: var(--danger-color);
             border-color: rgba(244, 63, 94, 0.4);
-            box-shadow: 0 0 15px rgba(244, 63, 94, 0.2);
         }
 
-        /* Container Main */
         .container { max-width: 580px; margin: 1.5rem auto; padding: 0 1.2rem; width: 100%; flex: 1; }
 
-        /* TAB VIEWS ANIMASI MASUK PERLAHAN DARI ARAH KIRI */
         .tab-view { 
             display: none; 
             opacity: 0;
             transform: translateX(-40px);
-            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
         .tab-view.active { 
@@ -130,7 +113,6 @@
             transform: translateX(0);
         }
 
-        /* Quick Feature Menu */
         .quick-menu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 1.5rem; }
         
         .menu-btn { 
@@ -147,39 +129,30 @@
             justify-content: center; 
             gap: 8px; 
             transition: all 0.3s ease; 
-            backdrop-filter: blur(16px);
         }
 
-        .menu-btn:hover { 
-            border-color: var(--accent-cyan); 
-            background: rgba(0, 242, 254, 0.1); 
-            transform: translateY(-3px); 
-            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.2);
-        }
-
+        .menu-btn:hover { border-color: var(--accent-cyan); background: rgba(0, 242, 254, 0.1); }
         .menu-btn i { color: var(--accent-cyan); }
 
-        /* Card Glassmorphism Style */
         .card { 
             background: var(--card-bg); 
             border: 1px solid var(--card-border); 
             border-radius: 24px; 
             padding: 2.2rem 1.8rem; 
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15); 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7); 
             text-align: center; 
             margin-bottom: 1.5rem; 
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
         }
 
         .card h2 { font-size: 1.35rem; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; color: #fff; }
         .card p { color: var(--text-dim); font-size: 0.86rem; margin-bottom: 1.6rem; line-height: 1.5; }
 
         .form-group { margin-bottom: 1.3rem; text-align: left; }
-        .form-group label { display: block; margin-bottom: 8px; font-size: 0.8rem; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.8rem; color: var(--text-dim); font-weight: 600; text-transform: uppercase; }
 
         .input-box { position: relative; display: flex; align-items: center; }
-        .input-box i { position: absolute; left: 16px; color: var(--text-dim); font-size: 1.05rem; transition: color 0.3s; }
+        .input-box i { position: absolute; left: 16px; color: var(--text-dim); font-size: 1.05rem; }
         
         .input-box input, .input-box textarea { 
             width: 100%; 
@@ -196,11 +169,27 @@
         .input-box input:focus, .input-box textarea:focus { 
             border-color: var(--accent-cyan); 
             box-shadow: 0 0 16px var(--accent-glow); 
-            background: rgba(30, 41, 59, 0.85);
         }
 
-        .input-box input:focus + i, .input-box textarea:focus + i {
-            color: var(--accent-cyan);
+        .checkbox-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 1.2rem 0;
+            text-align: left;
+            font-size: 0.83rem;
+            color: var(--text-dim);
+            background: rgba(30, 41, 59, 0.3);
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .checkbox-box input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-cyan);
+            cursor: pointer;
         }
 
         .btn-submit { 
@@ -222,19 +211,8 @@
             box-shadow: 0 8px 25px rgba(0, 242, 254, 0.3);
         }
 
-        .btn-submit:hover:not(:disabled) { 
-            opacity: 0.95; 
-            transform: translateY(-2px); 
-            box-shadow: 0 12px 30px rgba(0, 242, 254, 0.5); 
-        }
-
-        .btn-submit:disabled {
-            background: rgba(51, 65, 85, 0.5);
-            color: var(--text-dim);
-            cursor: not-allowed;
-            box-shadow: none;
-            transform: none;
-        }
+        .btn-submit:hover:not(:disabled) { opacity: 0.95; transform: translateY(-2px); }
+        .btn-submit:disabled { background: rgba(51, 65, 85, 0.5); color: var(--text-dim); cursor: not-allowed; box-shadow: none; }
 
         .btn-danger-sm { 
             background: rgba(244, 63, 94, 0.15); 
@@ -245,22 +223,29 @@
             cursor: pointer; 
             font-size: 0.78rem; 
             font-weight: 600; 
-            transition: 0.3s; 
         }
 
-        .btn-danger-sm:hover { background: var(--danger-color); color: #fff; }
+        .user-id-badge {
+            background: rgba(121, 40, 202, 0.2);
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
 
-        /* Bottom Navigation Bar */
         .bottom-nav { 
             position: fixed; 
             bottom: 0; 
             left: 0; 
             width: 100%; 
-            background: rgba(15, 23, 42, 0.8); 
+            background: rgba(15, 23, 42, 0.85); 
             backdrop-filter: blur(25px); 
-            -webkit-backdrop-filter: blur(25px);
             border-top: 1px solid var(--card-border); 
-            display: flex; 
+            display: none; 
             justify-content: space-around; 
             padding: 12px 0 10px; 
             z-index: 999; 
@@ -274,21 +259,12 @@
             text-decoration: none; 
             font-size: 0.75rem; 
             cursor: pointer; 
-            transition: all 0.3s ease; 
             width: 33.33%; 
-            font-weight: 500;
         }
 
-        .nav-item i { font-size: 1.25rem; margin-bottom: 4px; transition: transform 0.3s ease; }
-
+        .nav-item i { font-size: 1.25rem; margin-bottom: 4px; }
         .nav-item.active { color: var(--accent-cyan); font-weight: 600; }
-        .nav-item.active i { 
-            transform: translateY(-3px) scale(1.1); 
-            color: var(--accent-cyan); 
-            filter: drop-shadow(0 0 10px var(--accent-cyan)); 
-        }
 
-        /* History List UI */
         .history-list { text-align: left; margin-top: 1rem; }
         .history-item { 
             background: rgba(30, 41, 59, 0.4); 
@@ -301,86 +277,26 @@
             align-items: center; 
         }
 
-        .history-info { font-size: 0.85rem; }
-        .history-info strong { color: #fff; display: block; margin-bottom: 2px; }
-        .history-info span { color: var(--text-dim); font-size: 0.75rem; }
-
-        /* MODAL POPUP SYSTEM */
         .modal-overlay { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(3, 7, 18, 0.88); 
-            backdrop-filter: blur(12px); 
-            display: none; 
-            justify-content: center; 
-            align-items: center; 
-            z-index: 1000; 
-            padding: 1.2rem; 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(3, 7, 18, 0.88); backdrop-filter: blur(12px); 
+            display: none; justify-content: center; align-items: center; z-index: 1000; padding: 1.2rem; 
         }
 
         .modal-card { 
-            background: rgba(15, 23, 42, 0.95); 
-            border: 1px solid var(--card-border); 
-            width: 100%; 
-            max-width: 480px; 
-            border-radius: 28px; 
-            padding: 2.2rem 1.8rem; 
-            position: relative; 
-            animation: popIn 0.35s cubic-bezier(0.16, 1, 0.3, 1); 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.8); 
+            background: rgba(15, 23, 42, 0.95); border: 1px solid var(--card-border); 
+            width: 100%; max-width: 480px; border-radius: 28px; padding: 2.2rem 1.8rem; text-align: center;
         }
 
-        @keyframes popIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-        /* INDIKATOR STEPPER (3 STEP PROCESS) */
         .stepper-header { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 2rem; }
-        .step-circle { 
-            width: 38px; 
-            height: 38px; 
-            border-radius: 50%; 
-            background: rgba(30, 41, 59, 0.8); 
-            color: var(--text-dim); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-weight: bold; 
-            font-size: 0.9rem; 
-            border: 1px solid var(--border-color); 
-            transition: 0.4s ease; 
-        }
+        .step-circle { width: 38px; height: 38px; border-radius: 50%; background: rgba(30, 41, 59, 0.8); color: var(--text-dim); display: flex; align-items: center; justify-content: center; font-weight: bold; border: 1px solid var(--border-color); }
+        .step-rect { height: 5px; width: 38px; background: rgba(30, 41, 59, 0.8); border-radius: 4px; }
+        .step-circle.active { background: var(--accent-cyan); color: #030712; }
+        .step-circle.completed { background: var(--success-color); color: #000; }
 
-        .step-rect { height: 5px; width: 38px; background: rgba(30, 41, 59, 0.8); border-radius: 4px; transition: 0.4s ease; }
-
-        .step-circle.active { 
-            background: var(--accent-cyan); 
-            color: #030712; 
-            border-color: var(--accent-blue); 
-            box-shadow: 0 0 16px var(--accent-glow); 
-        }
-
-        .step-rect.active { background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue)); }
-        .step-circle.completed { background: var(--success-color); color: #000; border-color: var(--success-color); }
-
-        /* LOADER ANIMATION MODAL */
         .loader-box { display: none; text-align: center; padding: 1.2rem 0; }
-        .spinner { 
-            border: 4px solid rgba(255,255,255,0.1); 
-            border-left-color: var(--accent-cyan); 
-            border-radius: 50%; 
-            width: 45px; 
-            height: 45px; 
-            animation: spin 0.9s linear infinite; 
-            margin: 0 auto 12px; 
-        }
-
+        .spinner { border: 4px solid rgba(255,255,255,0.1); border-left-color: var(--accent-cyan); border-radius: 50%; width: 45px; height: 45px; animation: spin 0.9s linear infinite; margin: 0 auto 12px; }
         @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* SUCCESS CONTENT STEP 3 */
-        .success-box { text-align: center; padding: 1rem 0; }
-        .success-icon { font-size: 4rem; color: var(--success-color); margin-bottom: 12px; animation: popIn 0.4s ease; filter: drop-shadow(0 0 16px rgba(16, 185, 129, 0.4)); }
 
         footer { text-align: center; padding: 1rem; color: var(--text-dim); font-size: 0.78rem; }
         footer strong { color: var(--accent-cyan); }
@@ -391,21 +307,63 @@
     <div class="bg-glow-1"></div>
     <div class="bg-glow-2"></div>
 
-    <!-- Header Navbar -->
     <nav>
         <div class="logo">
             <i class="fa-solid fa-fire-flame-curved"></i>
             <span>AM PREMIUM FREE</span>
         </div>
-        <div class="stock-badge" id="stock-badge-container">
-            <i class="fa-solid fa-box-open"></i> Sisa Stok: <span id="user-stock-display">0</span>
+        <div class="stock-badge" id="stock-badge-container" style="display: none;">
+            <i class="fa-solid fa-box-open"></i> Stok Saya: <span id="user-stock-display">0</span>
         </div>
     </nav>
 
     <div class="container">
 
-        <!-- ================= VIEW 1: HOME (AKSES UTAMA) ================= -->
-        <div id="view-home" class="tab-view active">
+        <!-- ================= VIEW 0: REGISTER WAJIB ================= -->
+        <div id="view-register" class="tab-view active">
+            <div class="card">
+                <h2><i class="fa-solid fa-user-plus" style="color: var(--accent-cyan);"></i> Pendaftaran Akun</h2>
+                <p>Daftar akun terlebih dahulu untuk mendapatkan ID unik & akses fitur unlock Alight Motion.</p>
+
+                <form id="form-register">
+                    <div class="form-group">
+                        <label>Nama / Username</label>
+                        <div class="input-box">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="reg-username" placeholder="Masukkan username..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Utama</label>
+                        <div class="input-box">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="reg-email" placeholder="Masukkan email aktif..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="input-box">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="reg-password" placeholder="Buat password..." required>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-box">
+                        <input type="checkbox" id="reg-protection" required>
+                        <label for="reg-protection">Saya menyetujui sistem verifikasi & perlindungan sistem AM Premium.</label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-user-check"></i> Daftar & Masuk Dashboard 🔥
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- ================= VIEW 1: HOME (DASHBOARD UTAMA) ================= -->
+        <div id="view-home" class="tab-view">
             <div class="quick-menu">
                 <button class="menu-btn" onclick="pasteFromClipboard()">
                     <i class="fa-solid fa-paste"></i> Auto Paste Link AM
@@ -416,45 +374,47 @@
             </div>
 
             <div class="card">
-                <h2><i class="fa-solid fa-envelope-circle-check" style="color: var(--accent-cyan);"></i> Verifikasi</h2>
-                <p>Masukkan email untuk dijadikan premium.</p>
+                <div class="user-id-badge" id="display-user-id">ID: USR-000000</div>
+                <h2><i class="fa-solid fa-envelope-circle-check" style="color: var(--accent-cyan);"></i> Verifikasi AM Prem</h2>
+                <p>Masukkan email Alight Motion yang ingin diaktifkan menjadi Premium.</p>
                 
                 <form id="form-step-1">
                     <div class="form-group">
-                        <label>Email</label>
+                        <label>Email AM</label>
                         <div class="input-box">
                             <i class="fa-solid fa-envelope"></i>
-                            <input type="email" id="email-step-1" placeholder="masukkan email." required>
+                            <input type="email" id="email-step-1" placeholder="Masukkan email AM..." required>
                         </div>
                     </div>
-                    <button type="submit" class="btn-submit" id="btn-submit-step-1">verifikasi</button>
+                    <button type="submit" class="btn-submit" id="btn-submit-step-1">Verifikasi Sekarang 🔥</button>
                 </form>
             </div>
         </div>
 
-        <!-- ================= VIEW 2: HISTORY & REVOKE UNLOCK ================= -->
+        <!-- ================= VIEW 2: HISTORY ================= -->
         <div id="view-history" class="tab-view">
             <div class="card">
-                <h2><i class="fa-solid fa-clock-rotate-left" style="color: var(--accent-cyan);"></i> History Unlock AM Prem</h2>
-                <p>Daftar email</p>
-                
-                <div class="history-list" id="history-container">
-                    <!-- History items rendered dynamically -->
-                </div>
+                <h2><i class="fa-solid fa-clock-rotate-left" style="color: var(--accent-cyan);"></i> History Unlock</h2>
+                <p>Daftar riwayat email yang berhasil kamu unlock.</p>
+                <div class="history-list" id="history-container"></div>
             </div>
         </div>
 
         <!-- ================= VIEW 3: SETTINGS ================= -->
         <div id="view-settings" class="tab-view">
             <div class="card">
-                <h2><i class="fa-solid fa-gear" style="color: var(--accent-cyan);"></i>Komunitas</h2>
-                <p>Gabung ke channel WhatsApp resmi untuk info update</p>
+                <h2><i class="fa-solid fa-gear" style="color: var(--accent-cyan);"></i> Komunitas & Akun</h2>
+                <p>Informasi akun dan saluran komunikasi resmi.</p>
                 
                 <a href="https://whatsapp.com/channel/0029Vb8KEYf77qVJOmnDl33f" target="_blank" style="text-decoration: none;">
-                    <button class="btn-submit" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);">
-                        <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Masuk Channel WhatsApp
+                    <button class="btn-submit" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; margin-bottom: 12px;">
+                        <i class="fa-brands fa-whatsapp"></i> Masuk Channel WhatsApp
                     </button>
                 </a>
+
+                <button class="btn-submit" onclick="logoutUser()" style="background: rgba(244, 63, 94, 0.2); color: var(--danger-color); border: 1px solid var(--danger-color); box-shadow: none;">
+                    <i class="fa-solid fa-right-from-bracket"></i> Keluar / Logout
+                </button>
             </div>
         </div>
 
@@ -463,8 +423,6 @@
     <!-- MODAL POPUP VERIFIKASI (3-STEP TAHAPAN) -->
     <div class="modal-overlay" id="modal-verif">
         <div class="modal-card">
-            
-            <!-- INDIKATOR STEPPER (3 STEP PROCESS) -->
             <div class="stepper-header">
                 <div class="step-circle active" id="circle-1">1</div>
                 <div class="step-rect" id="rect-1"></div>
@@ -473,14 +431,10 @@
                 <div class="step-circle" id="circle-3">3</div>
             </div>
 
-            <!-- MODAL CONTENT TAHAP 2: VERIFIKASI LINK FIREBASE -->
             <div id="modal-step-2-content">
-                <h3 style="margin-bottom: 8px; color: #fff; text-align: center;">
-                    <i class="fa-solid fa-link" style="color: var(--accent-cyan);"></i> Verifikasi Link
-                </h3>
-
-                <p style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 1.2rem; text-align: center;">
-                    Cek inbox email kamu, lalu **tempel/paste Link Auth / Firebase** secara manual di bawah ini.
+                <h3 style="margin-bottom: 8px; color: #fff;">Verifikasi Link AM</h3>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 1.2rem;">
+                    Cek inbox email kamu, lalu paste **Link Auth / Firebase** di bawah ini.
                 </p>
 
                 <form id="form-step-2">
@@ -500,33 +454,28 @@
                         </div>
                     </div>
 
-                    <!-- LOADING BOX SAMBIL TUNGGU PROSES -->
                     <div class="loader-box" id="loader">
                         <div class="spinner"></div>
                         <p style="font-size: 0.85rem; color: var(--accent-cyan);">Sedang Menjadikan Akun Kamu Premium...</p>
                     </div>
 
-                    <button type="submit" class="btn-submit" id="btn-unlock-execute">verifikasi2</button>
+                    <button type="submit" class="btn-submit" id="btn-unlock-execute">Proses Step 2: Unlock 🔥</button>
                 </form>
             </div>
 
-            <!-- MODAL CONTENT TAHAP 3: SUKSES AKTIF PREMIUM -->
             <div id="modal-step-3-content" style="display: none;">
-                <div class="success-box">
-                    <i class="fa-solid fa-circle-check success-icon"></i>
-                    <h2 style="color: #fff; margin-bottom: 8px;">SELAMAT AM PREMIUM AKTIF</h2>
-                    <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 1.5rem;">
-                        Akun Alight Motion kamu (<strong id="success-email-text" style="color: var(--accent-cyan);"></strong>) telah berhasil diaktifkan menjadi Premium! Silakan buka aplikasi Alight Motion kamu.
-                    </p>
-                    <button class="btn-submit" onclick="closeSuccessModal()">Selesai<button>
-                </div>
+                <i class="fa-solid fa-circle-check" style="font-size: 4rem; color: var(--success-color); margin-bottom: 12px;"></i>
+                <h2 style="color: #fff; margin-bottom: 8px;">AM PREMIUM AKTIF! 🔥</h2>
+                <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 1.5rem;">
+                    Akun (<strong id="success-email-text" style="color: var(--accent-cyan);"></strong>) berhasil diaktifkan menjadi Premium!
+                </p>
+                <button class="btn-submit" onclick="closeSuccessModal()">Selesai & Kembali</button>
             </div>
-
         </div>
     </div>
 
-    <!-- BOTTOM NAVIGATION BAR (3 MENU) -->
-    <div class="bottom-nav">
+    <!-- BOTTOM NAVIGATION BAR -->
+    <div class="bottom-nav" id="main-bottom-nav">
         <div class="nav-item active" onclick="switchNav('home', this)">
             <i class="fa-solid fa-house"></i>
             <span>Home</span>
@@ -545,60 +494,89 @@
         Developer by <strong>Adit</strong> &copy; 2026. All Rights Reserved.
     </footer>
 
-    <!-- LOGIKA JAVASCRIPT INTEGRATED WITH SLIDE-LEFT-TO-RIGHT ANIMATION & STOCK CHECKER -->
     <script>
         const BASE_URL = 'https://apiz.vsunsee.qzz.io/vsunseeV8/alightmotion';
 
-        // TAB SWITCHER DENGAN ANIMASI MUNCUL PERLAHAN DARI KIRI
-        function switchNav(tabName, element) {
-            const currentTab = document.querySelector('.tab-view.active');
-            const targetTab = document.getElementById(`view-${tabName}`);
+        // Pengecekan Sesi Login (Auto-Login saat Refresh)
+        function checkUserAuth() {
+            const currentUser = JSON.parse(localStorage.getItem('current_user_session') || 'null');
+            const bottomNav = document.getElementById('main-bottom-nav');
+            const stockBadge = document.getElementById('stock-badge-container');
 
-            if (currentTab === targetTab) return;
+            if (currentUser) {
+                // Sembunyikan form register, tampilkan dashboard & bottom nav
+                document.getElementById('view-register').classList.remove('active');
+                document.getElementById('view-home').classList.add('active');
+                bottomNav.style.display = 'flex';
+                stockBadge.style.display = 'flex';
 
-            // Reset kelas & aktifkan nav button
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            if (element) {
-                element.classList.add('active');
-            }
-
-            // Sembunyikan tab saat ini
-            if (currentTab) {
-                currentTab.style.opacity = '0';
-                currentTab.style.transform = 'translateX(-40px)';
-                
-                setTimeout(() => {
-                    currentTab.classList.remove('active');
-                    
-                    // Tampilkan tab target dengan animasi pergeseran dari kiri
-                    targetTab.classList.add('active');
-                    setTimeout(() => {
-                        targetTab.style.opacity = '1';
-                        targetTab.style.transform = 'translateX(0)';
-                    }, 50);
-                }, 250);
+                document.getElementById('display-user-id').innerText = `ID: ${currentUser.id} (${currentUser.username})`;
+                updateStockUI();
             } else {
-                targetTab.classList.add('active');
-                setTimeout(() => {
-                    targetTab.style.opacity = '1';
-                    targetTab.style.transform = 'translateX(0)';
-                }, 50);
+                // Wajib Register
+                document.querySelectorAll('.tab-view').forEach(el => el.classList.remove('active'));
+                document.getElementById('view-register').classList.add('active');
+                bottomNav.style.display = 'none';
+                stockBadge.style.display = 'none';
+            }
+        }
+
+        // Handle Form Register
+        document.getElementById('form-register').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('reg-username').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const password = document.getElementById('reg-password').value.trim();
+            const protectionChecked = document.getElementById('reg-protection').checked;
+
+            if (!protectionChecked) {
+                alert('Centang perlindungan sistem terlebih dahulu!');
+                return;
             }
 
-            if (tabName === 'history') renderHistoryUI();
+            // Buat ID Unik
+            const userId = 'USR-' + Math.floor(100000 + Math.random() * 900000);
+            
+            // Jatah stok awal default
+            const initialStock = parseInt(localStorage.getItem('db_stock') || '5', 10);
+
+            const newUser = {
+                id: userId,
+                username: username,
+                email: email,
+                stock: initialStock,
+                registerTime: new Date().toLocaleTimeString()
+            };
+
+            // Simpan ke daftar user terdaftar di LocalStorage
+            const usersList = JSON.parse(localStorage.getItem('db_users_list') || '[]');
+            usersList.unshift(newUser);
+            localStorage.setItem('db_users_list', JSON.stringify(usersList));
+
+            // Simpan Sesi Login Aktif
+            localStorage.setItem('current_user_session', JSON.stringify(newUser));
+
+            // Kirim Log Pendaftaran ke owner.html
+            addLogToOwner(email, 'REGISTRASI', `User mendaftar - ID: ${userId} (${username})`);
+
+            alert(`✅ Pendaftaran Berhasil!\nID Anda: ${userId}`);
+            checkUserAuth();
+        });
+
+        function getCurrentUser() {
+            return JSON.parse(localStorage.getItem('current_user_session') || 'null');
         }
 
-        // Mengambil API Key dari Database Owner (localStorage)
-        function getApiKeyFromOwner() {
-            return localStorage.getItem('db_apikey') || '';
-        }
-
-        // Fungsi Mengecek Jumlah Stok Saat Ini
         function getCurrentStock() {
-            return parseInt(localStorage.getItem('db_stock') || '0', 10);
+            const user = getCurrentUser();
+            if (!user) return 0;
+
+            const usersList = JSON.parse(localStorage.getItem('db_users_list') || '[]');
+            const found = usersList.find(u => u.id === user.id);
+            return found ? found.stock : user.stock;
         }
 
-        // Update Tampilan Stok di UI & State Tombol
         function updateStockUI() {
             const currentStock = getCurrentStock();
             const stockDisplay = document.getElementById('user-stock-display');
@@ -608,23 +586,42 @@
             if (currentStock <= 0) {
                 stockDisplay.innerText = '0 (Habis)';
                 badgeContainer.classList.add('out-of-stock');
-                
                 if (btnStep1) {
                     btnStep1.disabled = true;
-                    btnStep1.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Stok AM Premium Habis';
+                    btnStep1.innerText = 'Stok AM Premium Habis ⚠️';
                 }
             } else {
                 stockDisplay.innerText = currentStock;
                 badgeContainer.classList.remove('out-of-stock');
-                
                 if (btnStep1) {
                     btnStep1.disabled = false;
-                    btnStep1.innerHTML = 'SEKARANG';
+                    btnStep1.innerText = 'Verifikasi Sekarang 🔥';
                 }
             }
         }
 
-        // Mencatat aktivitas user ke Log Owner & History Lokal
+        function decreaseStock() {
+            const user = getCurrentUser();
+            if (!user) return;
+
+            let usersList = JSON.parse(localStorage.getItem('db_users_list') || '[]');
+            usersList = usersList.map(u => {
+                if (u.id === user.id && u.stock > 0) {
+                    u.stock -= 1;
+                    user.stock = u.stock;
+                }
+                return u;
+            });
+
+            localStorage.setItem('db_users_list', JSON.stringify(usersList));
+            localStorage.setItem('current_user_session', JSON.stringify(user));
+            updateStockUI();
+        }
+
+        function getApiKeyFromOwner() {
+            return localStorage.getItem('db_apikey') || '';
+        }
+
         function addLogToOwner(email, status, detail) {
             const logs = JSON.parse(localStorage.getItem('db_user_logs') || '[]');
             const newLog = {
@@ -638,15 +635,25 @@
             localStorage.setItem('db_user_logs', JSON.stringify(logs));
         }
 
-        // Render History & Revoke Feature
+        function switchNav(tabName, element) {
+            document.querySelectorAll('.tab-view').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+
+            document.getElementById(`view-${tabName}`).classList.add('active');
+            if (element) element.classList.add('active');
+
+            if (tabName === 'history') renderHistoryUI();
+        }
+
         function renderHistoryUI() {
             const logs = JSON.parse(localStorage.getItem('db_user_logs') || '[]');
+            const user = getCurrentUser();
             const container = document.getElementById('history-container');
 
-            const successLogs = logs.filter(l => l.status.includes('SUKSES'));
+            const successLogs = logs.filter(l => l.status.includes('SUKSES') && l.email.toLowerCase() === (user ? user.email.toLowerCase() : ''));
 
             if (successLogs.length === 0) {
-                container.innerHTML = `<p style="text-align:center; color:#888; font-size:0.85rem;">Belum ada riwayat akun.</p>`;
+                container.innerHTML = `<p style="text-align:center; color:#888; font-size:0.85rem;">Belum ada riwayat unlock.</p>`;
                 return;
             }
 
@@ -654,92 +661,35 @@
                 <div class="history-item">
                     <div class="history-info">
                         <strong>${item.email}</strong>
-                        <span>Unlocked pada: ${item.time}</span>
+                        <span style="font-size:0.75rem; color:var(--text-dim);">Unlocked pada: ${item.time}</span>
                     </div>
-                    <button class="btn-danger-sm" onclick="revokeUnlock(${item.id})">
-                        <i class="fa-solid fa-trash"></i> Hapus
-                    </button>
                 </div>
             `).join('');
         }
 
-        // Hapus History / Revoke Status Unlock
-        function revokeUnlock(id) {
-            if (confirm('Hapus.')) {
-                let logs = JSON.parse(localStorage.getItem('db_user_logs') || '[]');
-                logs = logs.filter(l => l.id !== id);
-                localStorage.setItem('db_user_logs', JSON.stringify(logs));
-                renderHistoryUI();
-                alert('Histori berhasil dihapus dan status unlock dibatalkan.');
-            }
-        }
-
-        // Potong Stok
-        function decreaseStock() {
-            let currentStock = getCurrentStock();
-            if (currentStock > 0) {
-                currentStock -= 1;
-                localStorage.setItem('db_stock', currentStock.toString());
-                updateStockUI();
-            }
-        }
-
-        // Stepper UI Indicator (1 - 2 - 3 Step Visual)
-        function updateStepperUI(currentStep) {
-            const c1 = document.getElementById('circle-1');
-            const c2 = document.getElementById('circle-2');
-            const c3 = document.getElementById('circle-3');
-            const r1 = document.getElementById('rect-1');
-            const r2 = document.getElementById('rect-2');
-
-            if (currentStep === 2) {
-                c1.className = 'step-circle completed';
-                c1.innerHTML = '<i class="fa-solid fa-check"></i>';
-                r1.className = 'step-rect active';
-                c2.className = 'step-circle active';
-            } else if (currentStep === 3) {
-                c1.className = 'step-circle completed';
-                c1.innerHTML = '<i class="fa-solid fa-check"></i>';
-                r1.className = 'step-rect active';
-                c2.className = 'step-circle completed';
-                c2.innerHTML = '<i class="fa-solid fa-check"></i>';
-                r2.className = 'step-rect active';
-                c3.className = 'step-circle completed';
-                c3.innerHTML = '<i class="fa-solid fa-fire"></i>';
-            }
-        }
-
-        // Auto Paste Clipboard Manual
         async function pasteFromClipboard() {
             try {
                 const text = await navigator.clipboard.readText();
                 if (text) {
-                    const textarea = document.getElementById('link-code-step-2');
-                    textarea.value = text;
-                    alert('Berhasil menempelkan link dari clipboard!');
+                    document.getElementById('link-code-step-2').value = text;
+                    alert('Berhasil menempelkan link!');
                 }
             } catch (err) {
-                alert('Silakan izinkan akses clipboard pada browser kamu.');
+                alert('Izinkan akses clipboard browser kamu.');
             }
         }
 
         function checkStockAlert() {
             const stock = getCurrentStock();
-            if (stock <= 0) {
-                alert(` Status Sistem: Stok Habis!\nSisa Stok AM Premium: 0 Unit. Silakan hubungi admin/owner untuk restok.`);
-            } else {
-                alert(` Status Sistem: Normal / Ready!\nSisa Stok AM Premium: ${stock} Unit.`);
-            }
+            alert(`Sisa Stok AM Premium Kamu: ${stock} Unit.`);
         }
 
-        // STEP 1: Kirim Email Verifikasi
+        // STEP 1
         document.getElementById('form-step-1').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            // CEK VALIDASI STOK TERLEBIH DAHULU
             if (getCurrentStock() <= 0) {
-                alert(' Maaf, stok Alight Motion Premium sedang habis.');
-                updateStockUI();
+                alert('Stok Alight Motion Premium kamu habis!');
                 return;
             }
 
@@ -747,49 +697,39 @@
             const apiKey = getApiKeyFromOwner();
 
             if (!apiKey) {
-                alert('Sistem belum dikonfigurasi! Buka owner.html terlebih dahulu.');
+                alert('API Key belum dikonfigurasi oleh owner.');
                 return;
             }
 
             const btn = this.querySelector('button');
             btn.disabled = true;
-            btn.innerText = 'Mengirim Link Verifikasi...';
+            btn.innerText = 'Mengirim Link...';
 
             try {
-                const response = await fetch(`${BASE_URL}/send-link?apikey=${encodeURIComponent(apiKey)}&email=${encodeURIComponent(email)}`);
-                const data = await response.json();
-
-                addLogToOwner(email, 'STEP 1: VERIFIKASI', 'Mengirim link verifikasi');
+                await fetch(`${BASE_URL}/send-link?apikey=${encodeURIComponent(apiKey)}&email=${encodeURIComponent(email)}`);
+                
+                const user = getCurrentUser();
+                addLogToOwner(email, 'STEP 1: VERIFIKASI', `[ID: ${user.id}] Mengirim link verifikasi`);
 
                 document.getElementById('email-step-2').value = email;
                 document.getElementById('link-code-step-2').value = '';
 
-                updateStepperUI(2);
                 document.getElementById('modal-verif').style.display = 'flex';
-
             } catch (err) {
                 alert('Gagal mengirim link: ' + err.message);
-                addLogToOwner(email, 'GAGAL STEP 1', err.message);
             } finally {
+                btn.disabled = false;
+                btn.innerText = 'Verifikasi Sekarang 🔥';
                 updateStockUI();
             }
         });
 
-        // Auto Detect Link Firebase pada Input Textarea
-        document.getElementById('link-code-step-2').addEventListener('input', function(e) {
-            const value = e.target.value.trim();
-            if (value.includes('alight-creative.firebaseapp.com') || value.includes('alightcreative.com')) {
-                e.target.style.borderColor = 'var(--success-color)';
-            }
-        });
-
-        // STEP 2 & 3: Unlock Account & Auto Premium
+        // STEP 2 & 3
         document.getElementById('form-step-2').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            // CEK VALIDASI STOK KEMBALI SEBELUM UNLOCK
             if (getCurrentStock() <= 0) {
-                alert(' Maaf, stok Alight Motion Premium telah hab');
+                alert('Stok AM Premium kamu telah habis!');
                 closeSuccessModal();
                 return;
             }
@@ -806,20 +746,17 @@
 
             try {
                 const url = `${BASE_URL}/unlock?apikey=${encodeURIComponent(apiKey)}&email=${encodeURIComponent(email)}&code=${encodeURIComponent(codeLink)}`;
-                const response = await fetch(url);
-                const data = await response.json();
+                await fetch(url);
 
                 decreaseStock();
-                addLogToOwner(email, 'SUKSES AM PREMIUM', 'Sukses Unlock AM Premium');
+                const user = getCurrentUser();
+                addLogToOwner(email, 'SUKSES AM PREMIUM', `[ID: ${user.id}] Sukses Unlock AM Premium`);
 
                 document.getElementById('modal-step-2-content').style.display = 'none';
                 document.getElementById('modal-step-3-content').style.display = 'block';
                 document.getElementById('success-email-text').innerText = email;
-                updateStepperUI(3);
-
             } catch (err) {
                 alert('Gagal unlock verifikasi: ' + err.message);
-                addLogToOwner(email, 'GAGAL STEP 2', err.message);
             } finally {
                 loader.style.display = 'none';
                 btnExecute.style.display = 'flex';
@@ -832,17 +769,17 @@
             document.getElementById('modal-step-3-content').style.display = 'none';
             document.getElementById('form-step-1').reset();
             document.getElementById('form-step-2').reset();
-            location.reload();
+        }
+
+        function logoutUser() {
+            if (confirm('Yakin ingin keluar dari akun?')) {
+                localStorage.removeItem('current_user_session');
+                checkUserAuth();
+            }
         }
 
         window.addEventListener('storage', updateStockUI);
-        document.addEventListener('DOMContentLoaded', () => {
-            updateStockUI();
-            // Inisialisasi tampilan tab home awal
-            const homeTab = document.getElementById('view-home');
-            homeTab.style.opacity = '1';
-            homeTab.style.transform = 'translateX(0)';
-        });
+        document.addEventListener('DOMContentLoaded', checkUserAuth);
     </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wop</title>
+    <title>Owner Dashboard - Control Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -14,8 +14,6 @@
             --accent-cyan: #00f2fe;
             --accent-blue: #4facfe;
             --accent-purple: #7928ca;
-            --accent-pink: #ff007f;
-            --accent-glow: rgba(0, 242, 254, 0.3);
             --text-color: #f8fafc;
             --text-dim: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.08);
@@ -29,192 +27,75 @@
             background-color: var(--bg-color); 
             color: var(--text-color); 
             min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
             padding-bottom: 40px; 
-            overflow-x: hidden; 
         }
 
         .bg-glow-1 { 
-            position: fixed; 
-            top: -120px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            width: 700px; 
-            height: 380px; 
+            position: fixed; top: -120px; left: 50%; transform: translateX(-50%); 
+            width: 700px; height: 380px; 
             background: radial-gradient(circle, rgba(121, 40, 202, 0.25) 0%, rgba(0, 242, 254, 0.15) 50%, rgba(0,0,0,0) 75%); 
-            pointer-events: none; 
-            z-index: -1; 
-            filter: blur(40px);
+            pointer-events: none; z-index: -1; filter: blur(40px);
         }
 
         nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 1.2rem 1.8rem; 
-            background: rgba(15, 23, 42, 0.75); 
-            backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--card-border); 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 1.2rem 1.8rem; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); 
+            border-bottom: 1px solid var(--card-border); sticky: top; z-index: 100; 
         }
 
         .logo { font-size: 1.25rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; }
-        .logo i { color: var(--accent-purple); filter: drop-shadow(0 0 12px var(--accent-purple)); }
+        .logo i { color: var(--accent-purple); }
 
-        .container { max-width: 680px; margin: 1.5rem auto; padding: 0 1.2rem; width: 100%; flex: 1; }
+        .container { max-width: 720px; margin: 1.5rem auto; padding: 0 1.2rem; }
 
-        /* ANALYTICS GRID CARDS */
-        .analytics-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 1.5rem;
+        .analytics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1.5rem; }
+        .stat-card { 
+            background: var(--card-bg); border: 1px solid var(--card-border); 
+            border-radius: 18px; padding: 1.2rem 1rem; text-align: center; 
         }
-
-        .stat-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 18px;
-            padding: 1.2rem 1rem;
-            text-align: center;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .stat-card i {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-        }
-
-        .stat-card .stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.2;
-        }
-
-        .stat-card .stat-label {
-            font-size: 0.72rem;
-            color: var(--text-dim);
-            font-weight: 500;
-            margin-top: 4px;
-        }
+        .stat-card i { font-size: 1.5rem; margin-bottom: 8px; }
+        .stat-value { font-size: 1.5rem; font-weight: 700; color: #fff; }
+        .stat-label { font-size: 0.72rem; color: var(--text-dim); }
 
         .card { 
-            background: var(--card-bg); 
-            border: 1px solid var(--card-border); 
-            border-radius: 24px; 
-            padding: 2rem 1.8rem; 
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15); 
-            margin-bottom: 1.5rem; 
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: var(--card-bg); border: 1px solid var(--card-border); 
+            border-radius: 24px; padding: 2rem 1.8rem; margin-bottom: 1.5rem; backdrop-filter: blur(20px);
         }
 
-        .card h2 { font-size: 1.25rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; }
+        .card h2 { font-size: 1.25rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; color: #fff; }
 
         .form-group { margin-bottom: 1.2rem; }
-        .form-group label { display: block; margin-bottom: 8px; font-size: 0.8rem; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.8rem; color: var(--text-dim); font-weight: 600; }
 
         .input-box { position: relative; display: flex; align-items: center; }
-        .input-box i { position: absolute; left: 16px; color: var(--text-dim); font-size: 1.05rem; }
-        
+        .input-box i { position: absolute; left: 16px; color: var(--text-dim); }
         .input-box input { 
-            width: 100%; 
-            padding: 14px 15px 14px 48px; 
-            background: rgba(30, 41, 59, 0.5); 
-            border: 1px solid var(--border-color); 
-            border-radius: 14px; 
-            color: #fff; 
-            font-size: 0.92rem; 
-            outline: none; 
-            transition: all 0.3s ease; 
-        }
-
-        .input-box input:focus { 
-            border-color: var(--accent-cyan); 
-            box-shadow: 0 0 16px var(--accent-glow); 
-            background: rgba(30, 41, 59, 0.85);
+            width: 100%; padding: 14px 15px 14px 48px; background: rgba(30, 41, 59, 0.5); 
+            border: 1px solid var(--border-color); border-radius: 14px; color: #fff; outline: none; 
         }
 
         .btn-action { 
-            width: 100%; 
-            padding: 14px; 
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)); 
-            border: none; 
-            border-radius: 14px; 
-            color: #fff; 
-            font-size: 0.95rem; 
-            font-weight: 700; 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            gap: 10px; 
-            margin-top: 1rem; 
-            box-shadow: 0 8px 25px rgba(121, 40, 202, 0.3);
+            width: 100%; padding: 14px; background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)); 
+            border: none; border-radius: 14px; color: #fff; font-weight: 700; cursor: pointer; margin-top: 1rem; 
         }
 
-        .btn-action:hover { 
-            opacity: 0.95; 
-            transform: translateY(-2px); 
-            box-shadow: 0 12px 30px rgba(121, 40, 202, 0.5); 
+        .user-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.83rem; text-align: left; }
+        .user-table th, .user-table td { padding: 10px 12px; border-bottom: 1px solid var(--card-border); }
+        .user-table th { color: var(--accent-cyan); font-weight: 600; }
+
+        .btn-stock-edit {
+            background: rgba(0, 242, 254, 0.2); color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan); padding: 4px 8px; border-radius: 6px; cursor: pointer; font-size: 0.75rem;
         }
 
-        .btn-danger {
-            background: linear-gradient(135deg, var(--danger-color), #be123c);
-            box-shadow: 0 8px 25px rgba(244, 63, 94, 0.3);
-        }
-
-        .btn-danger:hover {
-            box-shadow: 0 12px 30px rgba(244, 63, 94, 0.5);
-        }
-
-        .log-list { margin-top: 1rem; max-height: 320px; overflow-y: auto; padding-right: 5px; }
+        .log-list { margin-top: 1rem; max-height: 280px; overflow-y: auto; }
         .log-item { 
-            background: rgba(30, 41, 59, 0.4); 
-            border: 1px solid var(--card-border); 
-            padding: 12px 14px; 
-            border-radius: 14px; 
-            margin-bottom: 10px; 
-            font-size: 0.82rem; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+            background: rgba(30, 41, 59, 0.4); border: 1px solid var(--card-border); 
+            padding: 12px 14px; border-radius: 14px; margin-bottom: 10px; font-size: 0.82rem; 
+            display: flex; justify-content: space-between; align-items: center; 
         }
 
-        .log-info strong { color: #fff; display: block; font-size: 0.85rem; }
-        .log-info span { color: var(--text-dim); font-size: 0.75rem; }
-        
-        .badge-status {
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.72rem;
-            font-weight: 600;
-        }
-
-        .badge-status.sukses { background: rgba(16, 185, 129, 0.2); color: var(--success-color); border: 1px solid var(--success-color); }
-        .badge-status.gagal { background: rgba(244, 63, 94, 0.2); color: var(--danger-color); border: 1px solid var(--danger-color); }
-        .badge-status.info { background: rgba(0, 242, 254, 0.2); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
-
-        @media (max-width: 480px) {
-            .analytics-grid { grid-template-columns: repeat(1, 1fr); }
-        }
-
-        footer { text-align: center; padding: 1rem; color: var(--text-dim); font-size: 0.78rem; }
-        footer strong { color: var(--accent-cyan); }
+        @media (max-width: 480px) { .analytics-grid { grid-template-columns: repeat(1, 1fr); } }
     </style>
 </head>
 <body>
@@ -230,30 +111,53 @@
 
     <div class="container">
 
-        <!-- ANALYTICS CARDS (RINGKASAN STATISTIK) -->
+        <!-- ANALYTICS CARDS -->
         <div class="analytics-grid">
             <div class="stat-card">
-                <i class="fa-solid fa-box-open" style="color: var(--accent-cyan);"></i>
-                <div class="stat-value" id="stat-stock-val">0</div>
-                <div class="stat-label">Sisa Stok AM premium</div>
+                <i class="fa-solid fa-users" style="color: var(--accent-cyan);"></i>
+                <div class="stat-value" id="stat-total-users">0</div>
+                <div class="stat-label">Total User Terdaftar</div>
             </div>
 
             <div class="stat-card">
-                <i class="fa-solid fa-users" style="color: var(--accent-blue);"></i>
-                <div class="stat-value" id="stat-users-val">0</div>
-                <div class="stat-label">User Login / Mencoba</div>
+                <i class="fa-solid fa-box-open" style="color: var(--accent-blue);"></i>
+                <div class="stat-value" id="stat-default-stock">0</div>
+                <div class="stat-label">Default Stok Baru</div>
             </div>
 
             <div class="stat-card">
                 <i class="fa-solid fa-circle-check" style="color: var(--success-color);"></i>
                 <div class="stat-value" id="stat-success-val">0</div>
-                <div class="stat-label">Sukses AM Premium</div>
+                <div class="stat-label">Total Unlock Sukses</div>
+            </div>
+        </div>
+
+        <!-- MANAJEMEN USER & STOK INDIVIDUAL -->
+        <div class="card">
+            <h2><i class="fa-solid fa-id-card" style="color: var(--accent-cyan);"></i> Daftar User & Stok Masing-Masing</h2>
+            <p style="font-size: 0.82rem; color: var(--text-dim);">Daftar pengguna terdaftar beserta ID & sisa stoknya.</p>
+
+            <div style="overflow-x: auto;">
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Stok AM</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-table-body">
+                        <!-- Rendered dynamically -->
+                    </tbody>
+                </table>
             </div>
         </div>
 
         <!-- CONFIGURATION FORM -->
         <div class="card">
-            <h2><i class="fa-solid fa-sliders" style="color: var(--accent-cyan);"></i> Konfigurasi System & Stok</h2>
+            <h2><i class="fa-solid fa-sliders" style="color: var(--accent-purple);"></i> Pengaturan Server & Stok Default</h2>
             
             <form id="owner-config-form">
                 <div class="form-group">
@@ -265,10 +169,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Jumlah Stok AM Premium</label>
+                    <label>Default Stok AM untuk User Baru</label>
                     <div class="input-box">
                         <i class="fa-solid fa-boxes-stacked"></i>
-                        <input type="number" id="cfg-stock" placeholder="Contoh: 10" min="0" required>
+                        <input type="number" id="cfg-stock" placeholder="Contoh: 5" min="0" required>
                     </div>
                 </div>
 
@@ -280,109 +184,111 @@
 
         <!-- USER LOGS MONITORING -->
         <div class="card">
-            <h2><i class="fa-solid fa-list-check" style="color: var(--accent-purple);"></i> Log Aktivitas Pengguna</h2>
-            <p style="font-size: 0.82rem; color: var(--text-dim);">Daftar riwayat</p>
-
-            <div class="log-list" id="owner-logs-container">
-                <!-- Logs rendered dynamically -->
-            </div>
-
-            <button type="button" class="btn-action btn-danger" onclick="clearOwnerLogs()" style="margin-top: 1.2rem;">
-                <i class="fa-solid fa-trash-can"></i> Bersihkan
-            </button>
+            <h2><i class="fa-solid fa-list-check" style="color: var(--accent-cyan);"></i> Log Aktivitas</h2>
+            <div class="log-list" id="owner-logs-container"></div>
         </div>
 
     </div>
 
-    <footer>
-        Developer by <strong>Adit</strong> &copy; 2026. All Rights Reserved.
-    </footer>
-
     <script>
-        // Load Data & Update Statistik saat Halaman Dimuat
         function loadOwnerData() {
-            const savedApiKey = localStorage.getItem('db_apikey') || '';
-            const savedStock = localStorage.getItem('db_stock') || '0';
-
-            document.getElementById('cfg-apikey').value = savedApiKey;
-            document.getElementById('cfg-stock').value = savedStock;
+            document.getElementById('cfg-apikey').value = localStorage.getItem('db_apikey') || '';
+            document.getElementById('cfg-stock').value = localStorage.getItem('db_stock') || '5';
 
             updateDashboardAnalytics();
+            renderUsersTable();
             renderOwnerLogs();
         }
 
-        // Kalkulasi Statistik Dashboard
         function updateDashboardAnalytics() {
             const logs = JSON.parse(localStorage.getItem('db_user_logs') || '[]');
-            const currentStock = localStorage.getItem('db_stock') || '0';
+            const users = JSON.parse(localStorage.getItem('db_users_list') || '[]');
+            const defaultStock = localStorage.getItem('db_stock') || '5';
 
-            // Total akun/email unik yang pernah mencoba/login
-            const uniqueUsers = new Set(logs.map(l => l.email)).size;
-
-            // Total sukses unlock AM Premium
             const successCount = logs.filter(l => l.status.includes('SUKSES')).length;
 
-            document.getElementById('stat-stock-val').innerText = currentStock;
-            document.getElementById('stat-users-val').innerText = uniqueUsers;
+            document.getElementById('stat-total-users').innerText = users.length;
+            document.getElementById('stat-default-stock').innerText = defaultStock;
             document.getElementById('stat-success-val').innerText = successCount;
         }
 
-        // Render Log Pengguna
+        function renderUsersTable() {
+            const users = JSON.parse(localStorage.getItem('db_users_list') || '[]');
+            const tbody = document.getElementById('user-table-body');
+
+            if (users.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:var(--text-dim);">Belum ada user mendaftar.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = users.map(u => `
+                <tr>
+                    <td style="color:var(--accent-cyan); font-weight:700;">${u.id}</td>
+                    <td>${u.username}</td>
+                    <td>${u.email}</td>
+                    <td style="font-weight:700; color:#fff;">${u.stock}</td>
+                    <td>
+                        <button class="btn-stock-edit" onclick="editUserStock('${u.id}')">
+                            <i class="fa-solid fa-pen"></i> Ubah Stok
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function editUserStock(userId) {
+            let users = JSON.parse(localStorage.getItem('db_users_list') || '[]');
+            const user = users.find(u => u.id === userId);
+
+            if (user) {
+                const newStock = prompt(`Atur jumlah stok AM untuk ID: ${user.id} (${user.username})`, user.stock);
+                if (newStock !== null && !isNaN(newStock) && newStock !== '') {
+                    user.stock = parseInt(newStock, 10);
+                    localStorage.setItem('db_users_list', JSON.stringify(users));
+
+                    // Jika user yang diedit sedang login, update sesinya
+                    const currentSession = JSON.parse(localStorage.getItem('current_user_session') || 'null');
+                    if (currentSession && currentSession.id === userId) {
+                        currentSession.stock = user.stock;
+                        localStorage.setItem('current_user_session', JSON.stringify(currentSession));
+                    }
+
+                    loadOwnerData();
+                    alert(`✅ Stok untuk ID ${userId} berhasil diperbarui menjadi ${newStock}!`);
+                }
+            }
+        }
+
         function renderOwnerLogs() {
             const logs = JSON.parse(localStorage.getItem('db_user_logs') || '[]');
             const container = document.getElementById('owner-logs-container');
 
             if (logs.length === 0) {
-                container.innerHTML = `<p style="text-align:center; color:var(--text-dim); font-size:0.85rem; padding: 1rem 0;">Belum ada aktivitas tercatat.</p>`;
+                container.innerHTML = `<p style="text-align:center; color:var(--text-dim); font-size:0.85rem; padding: 1rem 0;">Belum ada log.</p>`;
                 return;
             }
 
-            container.innerHTML = logs.map(item => {
-                let badgeClass = 'info';
-                if (item.status.includes('SUKSES')) badgeClass = 'sukses';
-                if (item.status.includes('GAGAL')) badgeClass = 'gagal';
-
-                return `
-                    <div class="log-item">
-                        <div class="log-info">
-                            <strong>${item.email}</strong>
-                            <span>${item.detail} • ${item.time}</span>
-                        </div>
-                        <span class="badge-status ${badgeClass}">${item.status}</span>
+            container.innerHTML = logs.map(item => `
+                <div class="log-item">
+                    <div>
+                        <strong>${item.email}</strong>
+                        <span style="color:var(--text-dim); font-size:0.75rem;">${item.detail} • ${item.time}</span>
                     </div>
-                `;
-            }).join('');
+                    <span style="color:var(--accent-cyan); font-weight:600;">${item.status}</span>
+                </div>
+            `).join('');
         }
 
-        // Simpan Konfigurasi Stok & API Key
         document.getElementById('owner-config-form').addEventListener('submit', function(e) {
             e.preventDefault();
-
-            const apiKey = document.getElementById('cfg-apikey').value.trim();
-            const stock = document.getElementById('cfg-stock').value.trim();
-
-            localStorage.setItem('db_apikey', apiKey);
-            localStorage.setItem('db_stock', stock);
+            localStorage.setItem('db_apikey', document.getElementById('cfg-apikey').value.trim());
+            localStorage.setItem('db_stock', document.getElementById('cfg-stock').value.trim());
 
             updateDashboardAnalytics();
-            alert('✅ Konfigurasi Stok dan API Key berhasil disimpan!');
+            alert('✅ Konfigurasi Server berhasil disimpan!');
         });
 
-        // Bersihkan Log
-        function clearOwnerLogs() {
-            if (confirm('Yakin ingin menghapus seluruh log aktivitas pengguna?')) {
-                localStorage.removeItem('db_user_logs');
-                updateDashboardAnalytics();
-                renderOwnerLogs();
-                alert('Log berhasil dibersihkan!');
-            }
-        }
-
-        // Auto update saat data localStorage berubah di tab lain
-        window.addEventListener('storage', () => {
-            loadOwnerData();
-        });
-
+        window.addEventListener('storage', loadOwnerData);
         document.addEventListener('DOMContentLoaded', loadOwnerData);
     </script>
 </body>
